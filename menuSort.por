@@ -1,11 +1,11 @@
 programa {
-
-  inteiro limiteMaximo = 100 // VARIÁVEL QUE SERÁ UTILIZADA PARA DEFINIR O LIMITE DO VETOR
+  
+  const inteiro limiteMaximo = 1000 // VARIÁVEL QUE SERÁ UTILIZADA PARA DEFINIR O LIMITE DO VETOR
   
   // VETORES QUE SERÃO UTILIZADOS PARA RECEBER RESPECTIVAMENTE, O VETOR DESORDENADO E O ORDENADO
   
-  caracter vetorOriginal[limiteMaximo] 
-  caracter vetorParaOrdenar[limiteMaximo]
+  cadeia vetorOriginal[limiteMaximo] 
+  cadeia vetorParaOrdenar[limiteMaximo]
 
   inteiro tamanhoUsuario = 0 // VARIÁVEL QUE GUARDARÁ QUANTOS ELEMENTOS O USUÁRIO DIGITOU 
 
@@ -28,7 +28,8 @@ programa {
     escreva("4 - Insertion Sort.\n")
     escreva("5 - Merge Sort.\n")
     escreva("6 - Heap Sort.\n")
-    escreva("7 - Sair do sistema.\n")
+    escreva("7 - Configurar Novo Vetor\n")
+    escreva("8 - Sair\n")
     escreva("=======================\n")
     escreva("Digite a opção que deseja usar: ")
     leia(opcao)
@@ -65,14 +66,18 @@ programa {
         pare
 
       caso '7':
+        configurarNovoVetor()
+        pare
+      
+      caso '8':
         escreva("Obrigado por usar nosso sistema! Até logo...")
         onOff = falso
         pare
-
+      
       caso contrario:
         escreva("Digite um valor válido.\n")
-
-    }
+      
+      }
     }
   }
 
@@ -99,7 +104,7 @@ programa {
     escreva("Vetor salvo com sucesso!\n")
   }
 
-  funcao exibirVetor(caracter vet[], inteiro tamanho) {
+  funcao exibirVetor(cadeia vet[], inteiro tamanho) {
     escreva("[ ")
     para(inteiro i = 0; i < tamanho; i++) {
       escreva(vet[i], " ")
@@ -114,14 +119,13 @@ programa {
   }
 
   // IMPLEMENTAÇÃO DE ALGORITMOS ABAIXO: 
-
   
-  funcao bubbleSort() {
+    funcao bubbleSort() {
       escreva("===    MENU BUBBLE SORT   ===\n")
       escreva("Antes: ")
       exibirVetor(vetorParaOrdenar, tamanhoUsuario)
 
-      caracter auxiliar
+      cadeia auxiliar
 
       para(inteiro i = 0; i < tamanhoUsuario; i++) {
         para(inteiro j = 0; j < tamanhoUsuario - i - 1; j++) {
@@ -145,6 +149,28 @@ programa {
 
     funcao selectionSort() {
       escreva("===    MENU SELECTION SORT   ===\n")
+      escreva("Antes: ")
+      exibirVetor(vetorParaOrdenar, tamanhoUsuario)
+
+      inteiro indiceMenor
+      cadeia auxiliar
+
+      para(inteiro i = 0; i < tamanhoUsuario - 1; i++) {
+        indiceMenor = i
+
+        para(inteiro j= i + 1; j < tamanhoUsuario; j++) {
+          se(vetorParaOrdenar[j] < vetorParaOrdenar[indiceMenor]) {
+            indiceMenor = j
+          }
+        }
+        se(indiceMenor != i) {
+          auxiliar = vetorParaOrdenar[i]
+          vetorParaOrdenar[i] = vetorParaOrdenar[indiceMenor]
+          vetorParaOrdenar[indiceMenor] = auxiliar
+        }
+    }
+      escreva("Depois: ")
+      exibirVetor(vetorParaOrdenar, tamanhoUsuario)
       escreva("=============================\n")
     }
     funcao insertionSort() {
