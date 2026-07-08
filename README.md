@@ -26,6 +26,3 @@ O programa executa de forma centralizada e permite analisar o comportamento dos 
 ### 🛠️ Tecnologias
 - **Linguagem:** Portugol (Pseudocódigo)
 - **IDE recomendada:** Portugol Studio
-
-### 🚀 Próximos Passos (Roadmap)
-- [ ] Refatoração e portabilidade dos algoritmos para uma linguagem de produção (ex: C, Java, Python ou JavaScript).
